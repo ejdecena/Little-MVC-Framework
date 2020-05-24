@@ -1,4 +1,4 @@
-# Little MVC Framework..
+# Little MVC Framework.
 
 *Little MVC Framework* is a small dual framework for software development. The framework is built following the *Model-View-Controller* architecture [(MVC)](https://en.wikipedia.org/wiki/Model-view-controller-view-controller).
 
