@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
 Little MVC Framework.
+Created by Edgard Decena.
+Email: edecena@gmail.com
 
 Main implementation.
 """
