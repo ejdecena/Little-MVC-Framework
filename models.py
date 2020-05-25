@@ -20,6 +20,10 @@ class Model(abc.ABC):
         # raise NotImplementedError
         pass
 
+    def disconnect(self):
+        # raise NotImplementedError
+        pass
+
     def model_exception(self, message):
         class ModelException(Exception):
             pass
