@@ -24,7 +24,7 @@ class Controller(abc.ABC):
 
     @helpers.load_object("controllers")
     def load_controller(self, controller, *args, **kwargs):
-        return controller(*args, **kwargs)
+        pass
 
     def controller_exception(self, message):
         class ControllerException(Exception):
@@ -64,3 +64,4 @@ if __name__ == "__main__":
     # Testing ...
 
     controller = InitController()
+    controller.run()
