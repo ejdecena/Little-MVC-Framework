@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
 Little MVC Framework.
+Created by Edgard Decena.
+Email: edecena@gmail.com
 
 Controllers implementation.
 """
@@ -15,18 +17,18 @@ class Controller(abc.ABC):
         pass
 
     @helpers.load_object("models")
-    def load_model(self, model, *args, **kwargs):
+    def load_model(self, model: str, *args, **kwargs) -> object:
         pass
 
     @helpers.load_object("views")
-    def load_view(self, view, *args, **kwargs):
+    def load_view(self, view: str, *args, **kwargs) -> object:
         pass
 
     @helpers.load_object("controllers")
-    def load_controller(self, controller, *args, **kwargs):
+    def load_controller(self, controller: str, *args, **kwargs) -> object:
         pass
 
-    def controller_exception(self, message):
+    def controller_exception(self, message: str) -> None:
         class ControllerException(Exception):
             pass
         raise ControllerException(self.__class__.__name__ + ": " + message)
@@ -35,6 +37,9 @@ class Controller(abc.ABC):
     def run(self):
         pass
 
+# +---------------------------------------------------------------------------+
+# |                         YOUR CONTROLLERS GO DOWN HERE                     |
+# +---------------------------------------------------------------------------+
 
 class InitController(Controller):
 
