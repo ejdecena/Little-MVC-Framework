@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
 Little MVC Framework.
+Created by Edgard Decena.
+Email: edecena@gmail.com
 
 Models implementation.
 """
@@ -24,11 +26,14 @@ class Model(abc.ABC):
         # raise NotImplementedError
         pass
 
-    def model_exception(self, message):
+    def model_exception(self, message: str) -> None:
         class ModelException(Exception):
             pass
         raise ModelException(self.__class__.__name__ + ": " + message)
 
+# +---------------------------------------------------------------------------+
+# |                         YOUR MODELS GO DOWN HERE                          |
+# +---------------------------------------------------------------------------+
 
 class TestModel(Model):
 
