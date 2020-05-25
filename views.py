@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
 Little MVC Framework.
+Created by Edgard Decena.
+Email: edecena@gmail.com
 
 Views implementation.
 """
@@ -9,7 +11,12 @@ import abc
 
 class View(abc.ABC):
 
-    def __init__(self, data_in):
+    def __init__(self, data_in=None):
+        """View Class Constructor.
+
+        Args:
+        data_in: data passed to the view for rendering and functionality.
+        """
         self.data_in = data_in
 
     @property
@@ -22,13 +29,20 @@ class View(abc.ABC):
 
     @abc.abstractmethod
     def show(self):
+        """Method of rendering the view.
+
+        Subclasses inheriting from View should implement this method.
+        """
         pass
 
-    def view_exception(self, message):
+    def view_exception(self, message: str) -> None:
         class ViewException(Exception):
             pass
         raise ViewException(self.__class__.__name__ + ": " + message)
 
+# +---------------------------------------------------------------------------+
+# |                          YOUR VIEWS GO DOWN HERE                          |
+# +---------------------------------------------------------------------------+
 
 class TestView(View):
 
