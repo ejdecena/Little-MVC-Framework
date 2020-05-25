@@ -12,6 +12,14 @@ class View(abc.ABC):
     def __init__(self, data_in):
         self.data_in = data_in
 
+    @property
+    def data_in(self):
+        return self.__data_in
+
+    @data_in.setter
+    def data_in(self, value):
+        self.__data_in = value
+
     @abc.abstractmethod
     def show(self):
         pass
