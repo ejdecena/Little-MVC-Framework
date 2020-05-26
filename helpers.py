@@ -9,7 +9,6 @@ Helpers implementation.
 import sqlite3
 import typing
 import base64
-import hashlib
 
 
 def load_object(module: str) -> callable:
