@@ -8,6 +8,8 @@ Helpers implementation.
 """
 import sqlite3
 import typing
+import base64
+import hashlib
 
 
 def load_object(module: str) -> callable:
@@ -78,6 +80,45 @@ def execute_db_query(db_filename: str, query: str, parameters: tuple=()) \
         query_result = cursor.execute(query, parameters)
         conn.commit()
     return query_result
+
+
+class CipherText:
+    """Class for text ciphering.
+
+    Use:
+    original_text  = "Hello world! :-)"
+
+    CipherText.KEY_SECRET = "my-secret-key"
+
+    encrypted_text = CipherText.encrypt(original_text)
+    original_text  = CipherText.decrypt(encrypted_text)
+
+    print("encrypted_text:", encrypted_text)
+    print("original_text:", original_text)
+    """
+
+    KEY_SECRET = "123"
+
+    @staticmethod
+    def encrypt(original_text: str) -> str:
+        enc = list()
+        for i, ch in enumerate(original_text):
+            key_c = CipherText.KEY_SECRET[i % len(CipherText.KEY_SECRET)]
+            enc_c = chr((ord(ch) + ord(key_c)) % 256)
+            enc.append(enc_c)
+        encrypted = base64.b64encode("".join(enc).encode()).decode("utf-8")
+        return encrypted
+
+    @staticmethod
+    def decrypt(encrypted_text: str) -> str:
+        dec = list()
+        enc = base64.b64decode(encrypted_text).decode()
+        for i, ch in enumerate(enc):
+            key_c = CipherText.KEY_SECRET[i % len(CipherText.KEY_SECRET)]
+            dec_c = chr((256 + ord(ch) - ord(key_c)) % 256)
+            dec.append(dec_c)
+        original_text = "".join(dec)
+        return original_text
 
 # +---------------------------------------------------------------------------+
 # |                         YOUR HELPERS GO DOWN HERE                         |
